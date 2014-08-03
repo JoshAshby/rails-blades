@@ -1,0 +1,2 @@
+class BladesController < ApplicationController
+end

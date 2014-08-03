@@ -1,0 +1,17 @@
+<h1><%= @brand.name %></h1>
+
+<%= link_to "Edit", edit_brand_path(@brand) %>
+
+<h3>Blades</h3>
+<ol>
+  <% @brand.blades.each do |b| %>
+    <li><%= b.name %></li>
+  <% end %>
+</ol>
+
+<h3>Soaps</h3>
+<ol>
+  <% @brand.soaps.each do |s| %>
+    <li><%= s.name %></li>
+  <% end %>
+</ol>

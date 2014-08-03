@@ -1,0 +1,2 @@
+class SoapsController < ApplicationController
+end

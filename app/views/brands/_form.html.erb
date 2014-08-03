@@ -1,0 +1,19 @@
+<%= form_for @brand do |f| %>
+  <% if @brand.errors.any? %>
+    <div class="error-explanation">
+      <h2>Could save brand (<%= pluralize(@brand.errors.count, "error") %>)</h2>
+      <ul>
+      <% @brand.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
