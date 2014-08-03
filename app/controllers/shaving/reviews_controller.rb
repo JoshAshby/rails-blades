@@ -1,6 +1,7 @@
 class Shaving::ReviewsController < ApplicationController
   def index
     @reviews = Shaving::Review.all
+    @products = Shaving::Product.all
   end
 
   def new
@@ -9,7 +10,7 @@ class Shaving::ReviewsController < ApplicationController
   end
 
   def create
-    @review = Shaving::Review.new product_params
+    @review = Shaving::Review.new review_params
 
     if @review.save
       redirect_to @review
@@ -30,7 +31,7 @@ class Shaving::ReviewsController < ApplicationController
 
   def update
     @review = Shaving::Review.find params[:id]
-    @review.update product_params
+    @review.update review_params
 
     if @review.save
       redirect_to @review
@@ -53,7 +54,7 @@ class Shaving::ReviewsController < ApplicationController
 
   private
     def review_params
-      params.require(:shaving_review).permit :name, :description, :brand_id, :type_id
+      params.require(:shaving_review).permit :comments, :overall_rating, :face_feel, :shave_feel, :product_id
     end
 
     def check_products

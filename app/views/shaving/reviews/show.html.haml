@@ -1,0 +1,19 @@
+.row
+  .col-md-12
+    %h1 Review for #{ @review.product.name }
+
+.row
+  .col-md-12
+    %strong Brand:
+    = link_to @review.product.brand.name, @review.product.brand
+    %strong Type:
+    = @review.product.type.name
+
+.row
+  .col-md-12
+    %p
+      = @review.comments
+
+.row
+  .col-md-12
+    = link_to 'Edit', edit_shaving_review_path(@review), class: 'btn btn-default'
