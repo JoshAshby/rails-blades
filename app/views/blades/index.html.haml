@@ -1,0 +1,14 @@
+.row
+  .col-md-12
+    %h1 Blade
+
+.row
+  .col-md-12
+    = link_to 'New', new_blade_path, class: 'btn btn-default'
+
+.row
+  .col-md-12
+    %ol
+      - @blades.each do |blade|
+        %li
+          = link_to blade.name, blade

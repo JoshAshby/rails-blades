@@ -1,0 +1,20 @@
+.row
+  .col-md-12
+    %h1 #{ @brand.name }
+
+.row
+  .col-md-12
+    = link_to 'Edit', edit_brand_path(@brand), class: 'btn btn-default'
+
+.row
+  .col-md-6
+    %h3 Blades
+    - @brand.blades.each do |blade|
+      %li
+        = link_to blade.name, blade
+
+  .col-md-6
+    %h3 Soaps
+    - @brand.soaps.each do |soap|
+      %li
+        = link_to soap.name, soap

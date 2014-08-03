@@ -1,0 +1,14 @@
+.row
+  .col-md-12
+    %h1 Brands
+
+.row
+  .col-md-12
+    = link_to 'New', new_brand_path, class: 'btn btn-default'
+
+.row
+  .col-md-12
+    %ol
+      - @brands.each do |brand|
+        %li
+          = link_to brand.name, brand

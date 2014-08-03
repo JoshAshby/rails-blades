@@ -1,0 +1,14 @@
+.row
+  .col-md-12
+    %h1 Soaps
+
+.row
+  .col-md-12
+    = link_to 'New', new_soap_path, class: 'btn btn-default'
+
+.row
+  .col-md-12
+    %ol
+      - @soaps.each do |soap|
+        %li
+          = link_to soap.name, soap
