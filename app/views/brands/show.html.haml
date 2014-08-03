@@ -9,12 +9,22 @@
 .row
   .col-md-6
     %h3 Blades
-    - @brand.blades.each do |blade|
-      %li
-        = link_to blade.name, blade
+    -if @brand.blades.any?
+      - @brand.blades.each do |blade|
+        %li
+          = link_to blade.name, blade
+    - else
+      .jumbotron
+        %p There are no blades for this brand yet. Want to make one?
+        = link_to 'New Blade', new_blade_path(:brand_id => @brand.id), class: 'btn btn-default'
 
   .col-md-6
     %h3 Soaps
-    - @brand.soaps.each do |soap|
-      %li
-        = link_to soap.name, soap
+    - if @brand.soaps.any?
+      - @brand.soaps.each do |soap|
+        %li
+          = link_to soap.name, soap
+    - else
+      .jumbotron
+        %p There are no soaps for this brand yet. Want to make one?
+        = link_to 'New Soap', new_soap_path(:brand_id => @brand.id), class: 'btn btn-default'

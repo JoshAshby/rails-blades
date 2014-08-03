@@ -10,7 +10,7 @@
                 = msg
 
   .row
-    .col-md-4
+    .col-md-12
       .form-group
         = f.label :name, class: 'control-label'
         = f.text_field :name, class: 'form-control'
@@ -21,7 +21,7 @@
 
       .form-group
         = f.label :brand
-        = collection_select :soaps, :brand_id, @brands, :id, :name, {}, {class: 'form-control'}
+        = f.collection_select :brand_id, @brands, :id, :name, {}, {class: 'form-control'}
 
   .row
     .col-md-6

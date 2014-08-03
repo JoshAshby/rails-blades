@@ -1,10 +1,11 @@
 class SoapsController < ApplicationController
   def index
     @soaps = Soap.all
+    @brands = Brand.all
   end
 
   def new
-    @soap = Soap.new
+    @soap = Soap.new :brand_id => params[:brand_id]
     @brands = Brand.all
   end
 
@@ -53,6 +54,6 @@ class SoapsController < ApplicationController
 
   private
     def soap_params
-      params.require(:soap).permit :name, :description
+      params.require(:soap).permit :name, :description, :brand_id
     end
 end

@@ -1,10 +1,11 @@
 class BladesController < ApplicationController
   def index
     @blades = Blade.all
+    @brands = Brand.all
   end
 
   def new
-    @blade = Blade.new
+    @blade = Blade.new :brand_id => params[:brand_id]
     @brands = Brand.all
   end
 
@@ -50,6 +51,6 @@ class BladesController < ApplicationController
 
   private
     def blade_params
-      params.require(:blade).permit :name, :description
+      params.require(:blade).permit :name, :description, :brand_id
     end
 end
