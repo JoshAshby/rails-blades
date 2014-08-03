@@ -1,0 +1,2 @@
+module Shaving::ReviewsHelper
+end

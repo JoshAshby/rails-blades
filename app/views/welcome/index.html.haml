@@ -1,20 +1,3 @@
 %p Allo, Josh
 
-%section#shaving
-  %h2 Shaving
-  %ul
-    - if @brands.any?
-      %li
-        = link_to 'Brands', brands_path
-
-      - if @blades.any?
-        %li
-          = link_to 'Blades', blades_path
-
-      - if @soaps.any?
-        %li
-          = link_to 'Soaps', soaps_path
-
-    - else
-      %p No brands in the system yet. Want to make one?
-      = link_to 'New Brand', new_brand_path, class: 'btn btn-default'
+-#= link_to 'Shaving', shaving_index

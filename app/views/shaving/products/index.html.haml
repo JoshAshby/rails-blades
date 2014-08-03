@@ -1,0 +1,26 @@
+.row
+  .col-md-12
+    %h1 Products
+
+- if @products.any?
+  .row
+    .col-md-12
+      = link_to 'New', new_shaving_product_path, class: 'btn btn-default'
+
+.row
+  .col-md-12
+    - if @products.any?
+      %ol
+        - @products.each do |product|
+          %li
+            = link_to product.name, product
+
+    - else
+      .jumbotron
+        - if @brands.any?
+          %p There are no products yet. Want to make one?
+          = link_to 'New product', new_shaving_product_path, class: 'btn btn-default'
+
+        - else
+          %p There are no products, and no brands yet. Want to make a new brand first?
+          = link_to 'New Brand', new_shaving_brand_path, class: 'btn btn-default'

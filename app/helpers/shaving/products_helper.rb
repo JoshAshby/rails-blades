@@ -1,0 +1,2 @@
+module Shaving::ProductsHelper
+end

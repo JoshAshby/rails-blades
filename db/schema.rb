@@ -11,37 +11,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140803021429) do
+ActiveRecord::Schema.define(version: 20140803163135) do
 
-  create_table "blades", force: true do |t|
-    t.text     "name"
+  create_table "shaving_brands", force: true do |t|
+    t.string   "name"
+    t.integer  "products_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shaving_brands", ["products_id"], name: "index_shaving_brands_on_products_id"
+
+  create_table "shaving_products", force: true do |t|
+    t.string   "name"
     t.text     "description"
     t.integer  "brand_id"
+    t.integer  "reviews_id"
+    t.integer  "type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "blades", ["brand_id"], name: "index_blades_on_brand_id"
+  add_index "shaving_products", ["brand_id"], name: "index_shaving_products_on_brand_id"
+  add_index "shaving_products", ["reviews_id"], name: "index_shaving_products_on_reviews_id"
+  add_index "shaving_products", ["type_id"], name: "index_shaving_products_on_type_id"
 
-  create_table "brands", force: true do |t|
-    t.text     "name"
-    t.integer  "blades_id"
-    t.integer  "soaps_id"
+  create_table "shaving_reviews", force: true do |t|
+    t.text     "comments"
+    t.integer  "overall_rating"
+    t.integer  "face_feel"
+    t.integer  "shaving_feel"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "brands", ["blades_id"], name: "index_brands_on_blades_id"
-  add_index "brands", ["soaps_id"], name: "index_brands_on_soaps_id"
+  add_index "shaving_reviews", ["product_id"], name: "index_shaving_reviews_on_product_id"
 
-  create_table "soaps", force: true do |t|
-    t.text     "name"
+  create_table "shaving_types", force: true do |t|
+    t.string   "name"
     t.text     "description"
-    t.integer  "brand_id"
+    t.integer  "products_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "soaps", ["brand_id"], name: "index_soaps_on_brand_id"
+  add_index "shaving_types", ["products_id"], name: "index_shaving_types_on_products_id"
 
 end
