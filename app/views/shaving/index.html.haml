@@ -1,15 +1,23 @@
-%h1 Shaving
+.row
+  .col-md-12
+    %h1 Shaving
 
-%section#shaving-supplies
-  %ul
-    - if @brands.any?
-      %li
-        = link_to 'Brands', shaving_brands_path
+.row
+  .col-md-12
+    - if @brands > 0
+      %ul#shaving-supplies
+        %li#brands
+          = link_to 'Brands', shaving_brands_path
 
-      - if @products.any?
-        %li
-          = link_to 'Products', shaving_products_path
+        - if @products > 0
+          %li#products
+            = link_to 'Products', shaving_products_path
+
+        - if @reviews > 0
+          %li#reviews
+            = link_to 'Reviews', shaving_reviews_path
 
     - else
-      %p No brands in the system yet. Want to make one?
-      = link_to 'New Brand', new_shaving_brand_path, class: 'btn btn-default'
+      .jumbotron
+        %p No brands in the system yet. Want to make one?
+        = link_to 'New Brand', new_shaving_brand_path, :class => 'btn btn-default'

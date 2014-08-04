@@ -35,6 +35,6 @@
     .col-md-6
       = f.submit class: 'btn btn-primary'
 
-    - if not @review.new_record?
+    - unless @review.new_record?
       .col-md-6
         = link_to 'Delete', shaving_review_path(@review), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger pull-right'
