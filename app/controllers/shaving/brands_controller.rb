@@ -26,7 +26,7 @@ class Shaving::BrandsController < ApplicationController
   end
 
   def update
-    @brand.update shaving_brand_params
+    @brand.update brand_params
 
     if @brand.save
       redirect_to @brand
