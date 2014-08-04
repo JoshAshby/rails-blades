@@ -19,6 +19,18 @@
         = f.label :comments, class: 'control-label'
         = f.text_area :comments, class: 'form-control'
 
+      .form-group
+        = f.label :overall_rating, class: 'control-label'
+        = f.range_field :overall_rating, :in => 0..10
+
+      .form-group
+        = f.label :shaving_feel, class: 'control-label'
+        = f.range_field :shaving_feel, :in => 0..10
+
+      .form-group
+        = f.label :face_feel, class: 'control-label'
+        = f.range_field :face_feel, :in => 0..10
+
   .row
     .col-md-6
       = f.submit class: 'btn btn-primary'
