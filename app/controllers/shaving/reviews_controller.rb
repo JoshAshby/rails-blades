@@ -1,4 +1,6 @@
 class Shaving::ReviewsController < ApplicationController
+  respond_to :html, :json
+
   def index
     @reviews = Shaving::Review.all
     @products = Shaving::Product.all
@@ -54,7 +56,7 @@ class Shaving::ReviewsController < ApplicationController
 
   private
     def review_params
-      params.require(:shaving_review).permit :comments, :overall_rating, :face_feel, :shave_feel, :product_id
+      params.require(:shaving_review).permit :comments, :overall_rating, :face_feel, :shaving_feel, :product_id
     end
 
     def check_products

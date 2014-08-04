@@ -4,4 +4,6 @@ class Shaving::Product < ActiveRecord::Base
   has_many :reviews, dependent: :destroy, :class_name => 'Shaving::Review'
 
   validates :name, presence: true
+  validates_presence_of :brand
+  validates_presence_of :type
 end
