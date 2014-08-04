@@ -12,4 +12,16 @@ FactoryGirl.define do
   trait :nilname do
     name nil
   end
+
+  trait :with_brand do
+    association :brand, factory: :shaving_brand
+  end
+
+  trait :with_type do
+    association :type, factory: :shaving_type
+  end
+
+  trait :with_product do
+    association :product, factory: :shaving_product
+  end
 end

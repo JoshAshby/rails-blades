@@ -3,6 +3,11 @@
 FactoryGirl.define do
   factory :shaving_product, :class => 'Shaving::Product' do
     name
-    brand
+  end
+
+  trait :with_reviews do
+    after :create do |product, evaluator|
+      FactoryGirl.create_list :shaving_review, 5, :product => product
+    end
   end
 end
