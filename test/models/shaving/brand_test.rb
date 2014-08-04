@@ -11,6 +11,15 @@ class Shaving::BrandTest < ActiveSupport::TestCase
     assert create :shaving_brand
   end
 
+  test "do we fail when creating multiple brands with the same name?" do
+    brand = build :shaving_brand
+    brand.save
+
+    assert_raises ActiveRecord::RecordInvalid do
+      create :shaving_brand, :name => brand.name
+    end
+  end
+
   test "is a brand a brand?" do
     brand = build_stubbed :shaving_brand
 

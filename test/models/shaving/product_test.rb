@@ -46,4 +46,13 @@ class Shaving::ProductTest < ActiveSupport::TestCase
 
     assert_instance_of Shaving::Type, product.type, "Type isn't a Shaving::Type!"
   end
+
+  test "do we fail when creating multiple products with the same name?" do
+    product = build :shaving_product
+    product.save
+
+    assert_raises ActiveRecord::RecordInvalid do
+      create :shaving_product, :name => product.name
+    end
+  end
 end

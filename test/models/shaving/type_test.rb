@@ -11,6 +11,15 @@ class Shaving::TypeTest < ActiveSupport::TestCase
     end
   end
 
+  test "do we fail when creating multiple types with the same name?" do
+    type = build :shaving_type
+    type.save
+
+    assert_raises ActiveRecord::RecordInvalid do
+      create :shaving_type, :name => type.name
+    end
+  end
+
   test "can we get a list of products from a type?" do
     type = create :shaving_type, :with_products
 
