@@ -1,4 +1,6 @@
 class Shaving::BrandsController < ApplicationController
+  before_action :find_brand, only: [:show, :edit, :update, :destroy]
+
   def index
     @brands = Shaving::Brand.all
   end
@@ -18,16 +20,13 @@ class Shaving::BrandsController < ApplicationController
   end
 
   def show
-    @brand = Shaving::Brand.find params[:id]
   end
 
   def edit
-    @brand = Shaving::Brand.find params[:id]
   end
 
   def update
-    @brand = Shaving::Brand.find params[:id]
-    @brand.update brand_params
+    @brand.update shaving_brand_params
 
     if @brand.save
       redirect_to @brand
@@ -37,17 +36,19 @@ class Shaving::BrandsController < ApplicationController
   end
 
   def destroy
-    @brand = Shaving::Brand.find params[:id]
-
     if @brand.destroy
-      redirect_to brands_path
+      redirect_to shaving_brands_path
     else
-      render 'edit'
+      redirect_to edit_shaving_brand_path(@brand)
     end
   end
 
   private
     def brand_params
       params.require(:shaving_brand).permit(:name)
+    end
+
+    def find_brand
+      @brand = Shaving::Brand.find params[:id]
     end
 end

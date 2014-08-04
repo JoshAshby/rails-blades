@@ -21,12 +21,21 @@
 .row
   .col-md-12
     %h3 Reviews
-    - @product.reviews.each do |review|
-      %p
-        = review.comments
+    - if @product.reviews.any?
+      = link_to 'New Review', new_shaving_review_path(:product => @product), class: 'btn btn-default'
 
-      .btn-group
-        = link_to 'View Review', review, class: 'btn btn-default'
-        = link_to 'Edit Review', edit_shaving_review_path(review), class: 'btn btn-default'
+      - @product.reviews.each do |review, i|
+        %p
+          = review.comments
 
-      %hr
+        .btn-group
+          = link_to 'View Review', review, class: 'btn btn-default'
+          = link_to 'Edit Review', edit_shaving_review_path(review), class: 'btn btn-default'
+
+        %hr
+
+    - else
+      .jumbotron
+        %p This product doesn't have any reviews yet. Want to make one?
+
+        = link_to 'New Review', new_shaving_review_path(:product => @product), class: 'btn btn-default'

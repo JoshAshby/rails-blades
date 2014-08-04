@@ -1,12 +1,14 @@
 class Shaving::ProductsController < ApplicationController
+  before_action :find_product, only: [:show, :edit, :update, :destroy]
+
+  before_action :find_all_brands_and_types, only: [:new, :create, :edit, :update]
+
   def index
     @products = Shaving::Product.all
   end
 
   def new
-    @product = Shaving::Product.new :brand_id => params[:brand_id]
-    @brands = Shaving::Brand.all
-    @types = Shaving::Type.all
+    @product = Shaving::Product.new :brand_id => params[:brand]
 
     if not @brands.any?
       redirect_to new_shaving_brand_path
@@ -19,49 +21,45 @@ class Shaving::ProductsController < ApplicationController
     if @product.save
       redirect_to @product
     else
-      @brands = Shaving::Brand.all
-      @types = Shaving::Type.all
-      render 'new'
+      render :new
     end
   end
 
   def show
-    @product = Shaving::Product.find params[:id]
   end
 
   def edit
-    @product = Shaving::Product.find params[:id]
-    @brands = Shaving::Brand.all
-    @types = Shaving::Type.all
   end
 
   def update
-    @product = Shaving::Product.find params[:id]
     @product.update product_params
 
     if @product.save
       redirect_to @product
     else
-      @brands = Shaving::Brand.all
-      @types = Shaving::Type.all
-      render 'edit'
+      render :edit
     end
   end
 
   def destroy
-    @product = Shaving::Product.find params[:id]
-
     if @product.destroy
       redirect_to shaving_products_path
     else
-      @brands = Shaving::Brand.all
-      @types = Shaving::Type.all
-      render 'edit'
+      redirect_to edit_shaving_product_path @product
     end
   end
 
   private
     def product_params
       params.require(:shaving_product).permit :name, :description, :brand_id, :type_id
+    end
+
+    def find_all_brands_and_types
+      @brands = Shaving::Brand.all
+      @types = Shaving::Type.all
+    end
+
+    def find_product
+      @product = Shaving::Product.find params[:id]
     end
 end

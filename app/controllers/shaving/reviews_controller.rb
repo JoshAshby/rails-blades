@@ -1,14 +1,14 @@
 class Shaving::ReviewsController < ApplicationController
-  respond_to :html, :json
+  before_action :check_products, only: [:index, :new, :create, :edit, :update]
+
+  before_action :find_review, only: [:show, :edit, :update, :destroy]
 
   def index
     @reviews = Shaving::Review.all
-    @products = Shaving::Product.all
   end
 
   def new
-    @review = Shaving::Review.new :product_id => params[:product_id]
-    @products = check_products
+    @review = Shaving::Review.new :product_id => params[:product]
   end
 
   def create
@@ -17,40 +17,31 @@ class Shaving::ReviewsController < ApplicationController
     if @review.save
       redirect_to @review
     else
-      @products = check_products
       render 'new'
     end
   end
 
   def show
-    @review = Shaving::Review.find params[:id]
   end
 
   def edit
-    @review = Shaving::Review.find params[:id]
-    @products = check_products
   end
 
   def update
-    @review = Shaving::Review.find params[:id]
     @review.update review_params
 
     if @review.save
       redirect_to @review
     else
-      @products = check_products
       render 'edit'
     end
   end
 
   def destroy
-    @review = Shaving::Review.find params[:id]
-
     if @review.destroy
       redirect_to shaving_reviews_path
     else
-      @products = check_products
-      render 'edit'
+      redirect_to edit_shaving_reviews_path(@review)
     end
   end
 
@@ -65,7 +56,9 @@ class Shaving::ReviewsController < ApplicationController
       if not @products.any?
         redirect_to new_shaving_product_path
       end
+    end
 
-      @products
+    def find_review
+      @review = Shaving::Review.find params[:id]
     end
 end
