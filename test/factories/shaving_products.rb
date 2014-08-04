@@ -10,4 +10,12 @@ FactoryGirl.define do
       FactoryGirl.create_list :shaving_review, 5, :product => product
     end
   end
+
+  trait :with_brand do
+    association :brand, factory: :shaving_brand
+  end
+
+  trait :with_type do
+    association :type, factory: :shaving_type
+  end
 end

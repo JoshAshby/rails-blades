@@ -10,4 +10,10 @@ class Shaving::BrandTest < ActiveSupport::TestCase
   test "can we save a brand?" do
     assert create :shaving_brand
   end
+
+  test "is a brand a brand?" do
+    brand = build_stubbed :shaving_brand
+
+    assert_instance_of Shaving::Brand, brand, "Brand isn't an instance of Shaving::Brand"
+  end
 end
