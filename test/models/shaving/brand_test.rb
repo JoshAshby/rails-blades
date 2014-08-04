@@ -3,7 +3,7 @@ require 'test_helper'
 class Shaving::BrandTest < ActiveSupport::TestCase
   test "can we not save a nil-named brand?" do
     assert_raises ActiveRecord::RecordInvalid do
-      create :shaving_brand, :nilname
+      create :shaving_brand, :name => nil
     end
   end
 

@@ -7,7 +7,7 @@ class Shaving::TypeTest < ActiveSupport::TestCase
 
   test "do we fail when making a nilnamed type?" do
     assert_raises ActiveRecord::RecordInvalid do
-      create :shaving_type, :nilname
+      create :shaving_type, :name => nil
     end
   end
 

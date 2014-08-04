@@ -13,7 +13,7 @@ class Shaving::ProductTest < ActiveSupport::TestCase
 
   test "can we failt trying to save a nil-named product?" do
     assert_raises ActiveRecord::RecordInvalid do
-      create :shaving_product, :nilname
+      create :shaving_product, :name => nil
     end
   end
 

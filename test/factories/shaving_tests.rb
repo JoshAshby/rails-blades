@@ -8,8 +8,4 @@ FactoryGirl.define do
   sequence :description do |n|
     "This is a test description. #{n}"
   end
-
-  trait :nilname do
-    name nil
-  end
 end

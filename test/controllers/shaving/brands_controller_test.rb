@@ -4,12 +4,15 @@ class Shaving::BrandsControllerTest < ActionController::TestCase
   test "does index return correctly?" do
     get :index
     assert_response :success
+
     assert_not_nil assigns :brands
   end
 
   test "does new return correctly?" do
     get :new
     assert_response :success
+
+    assert_template partial: '_form'
     assert_not_nil assigns :brand
   end
 
@@ -17,6 +20,8 @@ class Shaving::BrandsControllerTest < ActionController::TestCase
     post :create, shaving_brand: {name: ''}
 
     assert_template :new
+    assert_template partial: '_form'
+    assert_not_nil assigns :brand
   end
 
   test "can we post a new brand and have it redirect corrrectly?" do
@@ -31,6 +36,7 @@ class Shaving::BrandsControllerTest < ActionController::TestCase
     brand = create :shaving_brand
 
     get :show, {:id => brand.id}
+    assert_response :success
 
     assert_template :show
     assert_not_nil assigns :brand
@@ -40,6 +46,7 @@ class Shaving::BrandsControllerTest < ActionController::TestCase
     brand = create :shaving_brand
 
     get :edit, {:id => brand.id}
+    assert_response :success
 
     assert_template :edit
     assert_template partial: '_form'
