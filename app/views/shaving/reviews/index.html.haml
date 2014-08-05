@@ -17,10 +17,5 @@
 
     - else
       .jumbotron
-        - if @products.any?
-          %p There are no reviews yet. Want to make one?
-          = link_to 'New Review', new_shaving_review_path, class: 'btn btn-default'
-
-        - else
-          %p There are no products yet. Want to make a new product first?
-          = link_to 'New Product', new_shaving_product_path, class: 'btn btn-default'
+        %p There are no reviews yet. Want to make one?
+        = link_to 'New Review', new_shaving_review_path, class: 'btn btn-default'

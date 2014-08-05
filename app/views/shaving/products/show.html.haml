@@ -24,7 +24,7 @@
     - if @product.reviews.any?
       = link_to 'New Review', new_shaving_review_path(:product => @product), class: 'btn btn-default'
 
-      - @product.reviews.each_with_index do |review, i|
+      - @product.reviews.order(:overall_rating).each_with_index do |review, i|
         %p
           = review.comments
 

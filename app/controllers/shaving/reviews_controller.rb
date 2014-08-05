@@ -4,7 +4,7 @@ class Shaving::ReviewsController < ApplicationController
   before_action :find_review, only: [:show, :edit, :update, :destroy]
 
   def index
-    @reviews = Shaving::Review.all
+    @reviews = Shaving::Review.all.order :overall_rating
   end
 
   def new
@@ -51,7 +51,7 @@ class Shaving::ReviewsController < ApplicationController
     end
 
     def check_products
-      @products = Shaving::Product.all
+      @products = Shaving::Product.all.group(:type_id).order :name
 
       unless @products.any?
         redirect_to new_shaving_product_path

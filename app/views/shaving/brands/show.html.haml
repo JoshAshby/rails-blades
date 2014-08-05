@@ -7,7 +7,7 @@
     %h3 Products
     - if @brand.products.any?
       = link_to 'New Product', new_shaving_product_path(:brand => @brand), class: 'btn btn-default'
-      - @brand.products.each do |product|
+      - @brand.products.group(:type_id).order(:name).each do |product|
         %li
           = link_to product.name, product
     - else

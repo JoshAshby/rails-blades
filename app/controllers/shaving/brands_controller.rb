@@ -2,7 +2,7 @@ class Shaving::BrandsController < ApplicationController
   before_action :find_brand, only: [:show, :edit, :update, :destroy]
 
   def index
-    @brands = Shaving::Brand.all
+    @brands = Shaving::Brand.all.order :name
   end
 
   def new

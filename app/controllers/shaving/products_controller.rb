@@ -1,19 +1,14 @@
 class Shaving::ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
-  before_action :find_all_brands_and_types, only: [:new, :create, :edit, :update]
+  before_action :find_all_brands_and_types, only: [:index, :new, :create, :edit, :update]
 
   def index
-    @products = Shaving::Product.all
-    @brands = Shaving::Brand.all
+    @products = Shaving::Product.all.group(:type_id).order(:name)
   end
 
   def new
     @product = Shaving::Product.new :brand_id => params[:brand]
-
-    if not @brands.any?
-      redirect_to new_shaving_brand_path
-    end
   end
 
   def create
@@ -56,8 +51,8 @@ class Shaving::ProductsController < ApplicationController
     end
 
     def find_all_brands_and_types
-      @brands = Shaving::Brand.all
-      @types = Shaving::Type.all
+      @brands = Shaving::Brand.all.order :name
+      @types = Shaving::Type.all.order :name
 
       unless @brands.any?
         redirect_to new_shaving_brand_path
