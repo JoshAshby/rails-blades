@@ -1,34 +1,34 @@
 .row
-  .col-md-12
-    %h1 Review for #{ @review.product.name }
+  .col-md-4.col-md-offset-4
+    %h1 Review for #{ link_to @review.product.name, shaving_product_path(@review.product) }
 
 .row
-  .col-md-12
+  .col-md-4.col-md-offset-4
     %strong Brand:
     = link_to @review.product.brand.name, @review.product.brand
     %strong Type:
     = @review.product.type.name
 
 .row
-  .col-md-12
+  .col-md-4.col-md-offset-4
     %p
       = @review.comments
 
 .row
-  .col-md-12
+  .col-md-4.col-md-offset-4
     %strong Overall Rating:
     = @review.overall_rating
 
 .row
-  .col-md-12
+  .col-md-4.col-md-offset-4
     %strong Shaving Feel:
     = @review.shaving_feel
 
 .row
-  .col-md-12
+  .col-md-4.col-md-offset-4
     %strong Face Feel:
     = @review.shaving_feel
 
 .row
-  .col-md-12
+  .col-md-4.col-md-offset-4
     = link_to 'Edit', edit_shaving_review_path(@review), class: 'btn btn-default'

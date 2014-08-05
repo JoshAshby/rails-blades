@@ -1,14 +1,14 @@
 .row
-  .col-md-12
+  .col-md-4.col-md-offset-4
     %h1 Reviews
 
 - if @reviews.any?
   .row
-    .col-md-12
+    .col-md-4.col-md-offset-4
       = link_to 'New', new_shaving_review_path, class: 'btn btn-default'
 
 .row
-  .col-md-12
+  .col-md-4.col-md-offset-4
     - if @reviews.any?
       %ol
         - @reviews.each do |review|
