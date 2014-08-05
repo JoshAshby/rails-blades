@@ -5,6 +5,7 @@ class Shaving::ProductsController < ApplicationController
 
   def index
     @products = Shaving::Product.all
+    @brands = Shaving::Brand.all
   end
 
   def new
@@ -57,6 +58,10 @@ class Shaving::ProductsController < ApplicationController
     def find_all_brands_and_types
       @brands = Shaving::Brand.all
       @types = Shaving::Type.all
+
+      unless @brands.any?
+        redirect_to new_shaving_brand_path
+      end
     end
 
     def find_product

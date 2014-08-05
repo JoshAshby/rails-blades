@@ -3,7 +3,7 @@ class Shaving::Review < ActiveRecord::Base
 
   validates_presence_of :product
 
-  validates_inclusion_of :overall_rating, in: 0..10
-  validates_inclusion_of :face_feel, in: 0..10
-  validates_inclusion_of :shaving_feel, in: 0..10
+  validates :overall_rating, inclusion: { in: 0..10 }, presence: true
+  validates :face_feel, inclusion: { in: 0..10 }, presence: true
+  validates :shaving_feel, inclusion: { in: 0..10 }, presence: true
 end

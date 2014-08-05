@@ -53,7 +53,7 @@ class Shaving::ReviewsController < ApplicationController
     def check_products
       @products = Shaving::Product.all
 
-      if not @products.any?
+      unless @products.any?
         redirect_to new_shaving_product_path
       end
     end

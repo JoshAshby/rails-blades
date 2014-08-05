@@ -25,7 +25,7 @@ class Shaving::BrandsControllerTest < ActionController::TestCase
   end
 
   test "can we post a new brand and have it redirect corrrectly?" do
-    assert_difference('Shaving::Brand.all.count') do
+    assert_difference 'Shaving::Brand.all.count', 1 do
       post :create, shaving_brand: {name: 'Test'}
     end
 
@@ -66,9 +66,11 @@ class Shaving::BrandsControllerTest < ActionController::TestCase
 
   test "can we delete a brand?" do
     brand = build :shaving_brand
-    brand.save
+    assert brand.save
 
-    delete :destroy, id: brand.id
+    assert_difference 'Shaving::Brand.all.count', -1 do
+      delete :destroy, id: brand.id
+    end
 
     assert_redirected_to shaving_brands_path
   end
