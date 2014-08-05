@@ -5,3 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+types = [
+  "Blade",
+  "Soap",
+  "Razor",
+  "Alum Block",
+  "Brush"
+]
+
+types.each do |name|
+  Shaving::Type.create :name => name
+end
