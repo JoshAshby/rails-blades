@@ -13,7 +13,7 @@
       %ol
         - @reviews.each do |review|
           %li
-            = link_to review.product.name, review
+            = link_to review_list_item(review), review
 
     - else
       .jumbotron

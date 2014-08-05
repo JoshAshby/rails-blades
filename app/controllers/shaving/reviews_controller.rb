@@ -1,10 +1,12 @@
 class Shaving::ReviewsController < ApplicationController
+  respond_to :json, :html
+
   before_action :check_products, only: [:index, :new, :create, :edit, :update]
 
   before_action :find_review, only: [:show, :edit, :update, :destroy]
 
   def index
-    @reviews = Shaving::Review.all.order :overall_rating
+    @reviews = Shaving::Review.all.order :product_id, :overall_rating
   end
 
   def new
@@ -51,7 +53,7 @@ class Shaving::ReviewsController < ApplicationController
     end
 
     def check_products
-      @products = Shaving::Product.all.group(:type_id).order :name
+      @products = Shaving::Product.all.order :type_id, :name
 
       unless @products.any?
         flash[:error] = "You need to create a product first before you can review it!"

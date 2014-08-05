@@ -4,7 +4,7 @@ class Shaving::ProductsController < ApplicationController
   before_action :find_all_brands_and_types, only: [:index, :new, :create, :edit, :update]
 
   def index
-    @products = Shaving::Product.all.group(:type_id).order(:name)
+    @products = Shaving::Product.all.order :type_id, :name
   end
 
   def new
