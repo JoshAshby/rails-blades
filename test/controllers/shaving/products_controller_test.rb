@@ -16,6 +16,12 @@ class Shaving::ProductsControllerTest < ActionController::TestCase
     assert_not_nil assigns :brands
   end
 
+  test "Having no brands redirects the index correctly?" do
+    get :index
+
+    assert_redirected_to new_shaving_brand_path
+  end
+
   test "does new return correctly?" do
     create_type_and_brand
 
