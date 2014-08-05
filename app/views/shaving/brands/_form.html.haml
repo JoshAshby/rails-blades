@@ -3,7 +3,7 @@
     .col-md-12
       - if @brand.errors.any?
         .error-explanation
-          %h2 Couldn't save brand (#{ pluralize @brand.errors.count, "error" })
+          %strong.text-danger Couldn't save brand (#{ pluralize @brand.errors.count, "error" })
           %ul
             - @brand.errors.full_messages.each do |msg|
               %li

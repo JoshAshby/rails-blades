@@ -3,7 +3,7 @@
     .col-md-12
       - if @review.errors.any?
         .error-explanation
-          %h2 Couldn't save product (#{ pluralize @review.errors.count, "error" })
+          %strong.text-danger Couldn't save product (#{ pluralize @review.errors.count, "error" })
           %ul
             - @review.errors.full_messages.each do |msg|
               %li

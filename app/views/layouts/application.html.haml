@@ -7,5 +7,20 @@
     = csrf_meta_tags
 
   %body
+    -if flash[:notice]
+      .container
+        .alert.alert-info
+          = flash[:notice]
+
+    -if flash[:warning]
+      .container
+        .alert.alert-warning
+          = flash[:warning]
+
+    -if flash[:error]
+      .container
+        .alert.alert-danger
+          = flash[:error]
+
     .container-fluid
       = yield
