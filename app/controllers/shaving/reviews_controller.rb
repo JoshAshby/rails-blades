@@ -54,6 +54,7 @@ class Shaving::ReviewsController < ApplicationController
       @products = Shaving::Product.all.group(:type_id).order :name
 
       unless @products.any?
+        flash[:error] = "You need to create a product first before you can review it!"
         redirect_to new_shaving_product_path
       end
     end

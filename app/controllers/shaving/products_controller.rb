@@ -55,6 +55,7 @@ class Shaving::ProductsController < ApplicationController
       @types = Shaving::Type.all.order :name
 
       unless @brands.any?
+        flash[:error] = "You need to create a brand before you can create products!"
         redirect_to new_shaving_brand_path
       end
     end
