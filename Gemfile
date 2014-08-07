@@ -9,8 +9,6 @@ gem 'sqlite3'
 # Use bower to help manage client side assets
 gem 'bower-rails'
 
-gem 'pluggable_js'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 
@@ -53,6 +51,8 @@ end
 group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development, :test do
