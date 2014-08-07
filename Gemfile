@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+source 'https://rails-assets.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
@@ -9,6 +9,8 @@ gem 'sqlite3'
 
 # Use bower to help manage client side assets
 gem 'bower-rails'
+
+gem 'pluggable_js'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

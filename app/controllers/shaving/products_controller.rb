@@ -1,4 +1,6 @@
 class Shaving::ProductsController < ApplicationController
+  layout 'shaving'
+
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   before_action :find_all_brands_and_types, only: [:index, :new, :create, :edit, :update]
@@ -22,6 +24,7 @@ class Shaving::ProductsController < ApplicationController
   end
 
   def show
+    respond_to :html, :json
   end
 
   def edit

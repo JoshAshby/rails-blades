@@ -1,4 +1,6 @@
 class Shaving::ReviewsController < ApplicationController
+  layout 'shaving'
+
   respond_to :json, :html
 
   before_action :check_products, only: [:index, :new, :create, :edit, :update]

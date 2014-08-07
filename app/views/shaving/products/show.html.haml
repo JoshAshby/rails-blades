@@ -1,27 +1,48 @@
 .row
-  .col-md-4.col-md-offset-4
+  .col-md-12
     %h1 #{ @product.name }
 
 .row
-  .col-md-4.col-md-offset-4
+  .col-md-12
     %strong Brand:
     = link_to @product.brand.name, @product.brand
+
+.row
+  .col-md-12
     %strong Type:
     = @product.type.name
 
 .row
-  .col-md-4.col-md-offset-4
+  .col-md-12
+    %strong Last Updated:
+    = updated_at(@product)
+
+%hr
+
+.row
+  .col-md-12
     %p
       = @product.description
 
 .row
-  .col-md-4.col-md-offset-4
+  .col-md-12
     = link_to 'Edit', edit_shaving_product_path(@product), class: 'btn btn-default'
 
-.row
-  .col-md-4.col-md-offset-4
-    %h3 Reviews
-    - if @product.reviews.any?
+- if @product.reviews.any?
+  .row
+    .col-md-12
+      %h2 Graphs
+
+  .row
+    .col-md-12
+      .chart.rickshaw
+        #ratings-yaxis{ style: 'position: absolute; top: 0; bottom: 0; width: 40px;' }
+        #ratings-chart{ style: 'position: relative; left: 40px;' }
+        #ratings-legend{ style: 'margin-top: 10px; float: right;' }
+
+  .row
+    .col-md-12
+      %h3 Reviews
       = link_to 'New Review', new_shaving_review_path(:product => @product), class: 'btn btn-default'
 
       - @product.reviews.order(:overall_rating).each_with_index do |review, i|
@@ -35,7 +56,9 @@
         - unless (@product.reviews.length - i) == 1
           %hr
 
-    - else
+- else
+  .row
+    .col-md-12
       .jumbotron
         %p This product doesn't have any reviews yet. Want to make one?
 

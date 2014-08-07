@@ -1,0 +1,61 @@
+// Place all the styles related to the shaving controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$background: whitesmoke;
+
+$font_family: 'http://fonts.googleapis.com/css?family=Alike+Angular';
+
+@import url($font_family);
+
+body.shaving {
+  font-family: 'Alike Angular', serif;
+  font-size: 16px;
+
+  padding-bottom: 10px;
+
+  background: url(<%= asset_url 'background-noise.png' %>);
+  background-color: $background;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-transform: uppercase;
+  }
+
+  h1:first-letter{
+    font-size: 56px;
+  }
+
+  h2:first-letter{
+    font-size: 50px;
+  }
+
+  h3:first-letter{
+    font-size: 44px;
+  }
+
+  h4:first-letter{
+    font-size: 30px;
+  }
+
+  h5:first-letter{
+    font-size: 25px;
+  }
+
+  h6:first-letter{
+    font-size: 22px;
+  }
+
+  .content {
+    background-color: white;
+  }
+
+  .btn {
+    margin-bottom: 15px;
+  }
+}

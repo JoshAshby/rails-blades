@@ -1,4 +1,6 @@
 class Shaving::BrandsController < ApplicationController
+  layout 'shaving'
+
   before_action :find_brand, only: [:show, :edit, :update, :destroy]
 
   def index

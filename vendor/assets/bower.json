@@ -1,6 +1,10 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
-    "lodash": "latest"
+    "lodash": "latest",
+    "d3": "latest",
+    "epoch": "latest",
+    "rickshaw": "latest",
+    "moment": "latest"
   }
 }
