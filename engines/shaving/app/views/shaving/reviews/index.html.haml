@@ -1,0 +1,21 @@
+.row
+  .col-md-12
+    %h1 Reviews
+
+- if @reviews.any?
+  .row
+    .col-md-12
+      = link_to 'New', new_review_path, class: 'btn btn-default'
+
+.row
+  .col-md-12
+    - if @reviews.any?
+      %ol
+        - @reviews.each do |review|
+          %li
+            = link_to review_list_item(review), review
+
+    - else
+      .jumbotron
+        %p There are no reviews yet. Want to make one?
+        = link_to 'New Review', new_review_path, class: 'btn btn-default'

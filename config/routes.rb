@@ -6,12 +6,7 @@ Rails.application.routes.draw do
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  get '/shaving' => 'shaving#index'
-  namespace :shaving do
-    resources :brands
-    resources :products
-    resources :reviews
-  end
+  mount Shaving::Engine, at: '/shaving'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

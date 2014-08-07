@@ -1,0 +1,40 @@
+= form_for @review, html: {class: 'form'} do |f|
+  .row
+    .col-md-12
+      - if @review.errors.any?
+        .error-explanation
+          %strong.text-danger Couldn't save product (#{ pluralize @review.errors.count, "error" })
+          %ul
+            - @review.errors.full_messages.each do |msg|
+              %li
+                = msg
+
+  .row
+    .col-md-12
+      .form-group
+        = f.label :product
+        = f.collection_select :product_id, @products, :id, :name, {}, {class: 'form-control'}
+
+      .form-group
+        = f.label :comments, class: 'control-label'
+        = f.text_area :comments, class: 'form-control'
+
+      .form-group
+        = f.label :overall_rating, class: 'control-label'
+        = f.range_field :overall_rating, :in => 0..10
+
+      .form-group
+        = f.label :shaving_feel, class: 'control-label'
+        = f.range_field :shaving_feel, :in => 0..10
+
+      .form-group
+        = f.label :face_feel, class: 'control-label'
+        = f.range_field :face_feel, :in => 0..10
+
+  .row
+    .col-md-6
+      = f.submit class: 'btn btn-primary'
+
+    - unless @review.new_record?
+      .col-md-6
+        = link_to 'Delete', review_path(@review), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger pull-right'

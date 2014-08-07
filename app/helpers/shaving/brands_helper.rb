@@ -1,2 +1,0 @@
-module Shaving::BrandsHelper
-end

@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require rickshaw
+ *= require epoch
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+a:hover, a:active {
+  text-decoration: none;
+}
+
+$background: whitesmoke;
+
+$font_family: 'http://fonts.googleapis.com/css?family=Alike+Angular';
+
+@import url($font_family);
+
+body {
+  font-family: 'Alike Angular', serif;
+  font-size: 16px;
+
+  padding-bottom: 10px;
+
+  background: url(<%= asset_url 'background-noise.png' %>);
+  background-color: $background;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: uppercase;
+}
+
+h1:first-letter{
+  font-size: 56px;
+}
+
+h2:first-letter{
+  font-size: 50px;
+}
+
+h3:first-letter{
+  font-size: 44px;
+}
+
+h4:first-letter{
+  font-size: 30px;
+}
+
+h5:first-letter{
+  font-size: 25px;
+}
+
+h6:first-letter{
+  font-size: 22px;
+}
+
+.content {
+  background-color: white;
+}
+
+.btn {
+  margin-bottom: 15px;
+}

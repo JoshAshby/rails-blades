@@ -1,0 +1,65 @@
+.row
+  .col-md-12
+    %h1 #{ @product.name }
+
+.row
+  .col-md-12
+    %strong Brand:
+    = link_to @product.brand.name, @product.brand
+
+.row
+  .col-md-12
+    %strong Type:
+    = @product.type.name
+
+.row
+  .col-md-12
+    %strong Last Updated:
+    = updated_at(@product)
+
+%hr
+
+.row
+  .col-md-12
+    %p
+      = @product.description
+
+.row
+  .col-md-12
+    = link_to 'Edit', edit_product_path(@product), class: 'btn btn-default'
+
+- if @product.reviews.any?
+  .row
+    .col-md-12
+      %h2 Graphs
+
+  .row
+    .col-md-12
+      .chart.rickshaw
+        #ratings-yaxis{ style: 'position: absolute; top: 0; bottom: 0; width: 40px;' }
+        #ratings-chart{ style: 'position: relative; left: 40px;' }
+        #ratings-legend{ style: 'margin-top: 10px; float: right;' }
+
+  .row
+    .col-md-12
+      %h3 Reviews
+      = link_to 'New Review', new_review_path(:product => @product), class: 'btn btn-default'
+
+      - @product.reviews.order(:overall_rating).each_with_index do |review, i|
+        %p
+          = review.comments
+
+        .btn-group
+          = link_to 'View Review', review, class: 'btn btn-default'
+          = link_to 'Edit Review', edit_review_path(review), class: 'btn btn-default'
+
+        - unless (@product.reviews.length - i) == 1
+          %hr
+
+- else
+  .row
+    .col-md-12
+      .jumbotron
+        %p This product doesn't have any reviews yet. Want to make one?
+
+        = link_to 'New Review', new_review_path(:product => @product), class: 'btn btn-default'

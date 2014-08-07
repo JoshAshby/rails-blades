@@ -1,0 +1,23 @@
+.row
+  .col-md-12
+    %h1 Shaving
+
+.row
+  .col-md-12
+    - if Shaving::Brand.count > 0
+      %ul#shaving-supplies
+        %li#brands
+          = link_to 'Brands', brands_path
+
+        - if Shaving::Product.count > 0
+          %li#products
+            = link_to 'Products', products_path
+
+        - if Shaving::Review.count > 0
+          %li#reviews
+            = link_to 'Reviews', reviews_path
+
+    - else
+      .jumbotron
+        %p No brands in the system yet. Want to make one?
+        = link_to 'New Brand', new_brand_path, :class => 'btn btn-default'
