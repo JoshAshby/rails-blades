@@ -1,7 +1,9 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
-#= require 'nvd3'
+#= require d3
+#= require nvd3
+#= require moment
 
 parse_data = (rawJson) ->
   if rawJson? and rawJson.reviews?
@@ -57,6 +59,5 @@ ratings_chart = (data) ->
     chart
 
 
-window['shaving/products#show'] = (data) ->
-  $ ->
-    $.getJSON window.location.href, parse_data
+$ ->
+  $.getJSON window.location.href, parse_data

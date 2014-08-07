@@ -15,8 +15,3 @@
 #= require turbolinks
 #= require bootstrap-sprockets
 #= require lodash
-#= require moment
-#= require d3
-#= require epoch
-#= require rickshaw
-#= require_tree .

@@ -10,11 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
- *= require rickshaw
- *= require epoch
- *= require nvd3
  */
 
 @import "bootstrap-sprockets";
@@ -33,8 +29,6 @@ $font_family: 'http://fonts.googleapis.com/css?family=Alike+Angular';
 body {
   font-family: 'Alike Angular', serif;
   font-size: 16px;
-
-  padding-bottom: 10px;
 
   background: url(<%= asset_url 'background-noise.png' %>);
   background-color: $background;
@@ -75,8 +69,11 @@ h6:first-letter{
 
 .content {
   background-color: white;
+
+  padding-bottom: 20px;
 }
 
 .btn {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
