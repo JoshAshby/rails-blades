@@ -1,6 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+#= require 'nvd3'
 
 parse_data = (rawJson) ->
   if rawJson? and rawJson.reviews?
@@ -9,63 +10,53 @@ parse_data = (rawJson) ->
       face: []
       shave: []
     }
+
     rawJson.reviews.forEach (e, i) ->
       data.overall.push { x: e.updated_at, y: e.overall_rating }
-      data.face.push { x: e.updated_at, y: e.face_feel }
-      data.shave.push { x: e.updated_at, y: e.shaving_feel }
+      data.face.push    { x: e.updated_at, y: e.face_feel }
+      data.shave.push   { x: e.updated_at, y: e.shaving_feel }
 
     ratings_chart data
 
 
 ratings_chart = (data) ->
-  series_rickshaw = [
+  series = [
     {
-      name: "Overall Rating"
-      color: 'Gold'
-      data: data.overall
+      key: "Overall"
+      values: data.overall
     }
     {
-      name: "Face Feel Rating"
-      color: 'Blue'
-      data: data.face
+      key: "Face Feel"
+      values: data.face
     }
     {
-      name: "Shaving Feel Rating"
-      color: 'Red'
-      data: data.shave
+      key: "Shaving Feel"
+      values: data.shave
     }
   ]
 
-  graph = new Rickshaw.Graph
-    series: series_rickshaw
-    renderer: 'scatterplot'
-    height: 250
-    element: document.querySelector("#ratings-chart")
+  nv.addGraph ->
+    chart = nv.models.lineChart()
+      .useInteractiveGuideline true
+      .transitionDuration 350
+      .showLegend true
+      .showYAxis true
+      .showXAxis true
 
-  xAxis = new Rickshaw.Graph.Axis.Time
-    graph: graph
+    chart.xAxis.tickFormat (d) ->
+      d3.time.format('%x')(moment.unix(d).toDate())
 
-  yAxis = new Rickshaw.Graph.Axis.Y
-    graph: graph
-    orientation: 'left'
-    element: document.querySelector("#ratings-yaxis")
+    chart.yAxis.tickFormat d3.format 'd'
 
-  graph.render()
-  xAxis.render()
-  yAxis.render()
+    d3.select '#nvd3-chart svg'
+      .datum series
+      .call chart
 
-  hover = new Rickshaw.Graph.HoverDetail
-    graph: graph
+    nv.utils.windowResize chart.update
 
-  legend = new Rickshaw.Graph.Legend
-    graph: graph
-    element: document.querySelector("#ratings-legend")
-
-  shelving = new Rickshaw.Graph.Behavior.Series.Toggle
-    graph: graph
-    legend: legend
+    chart
 
 
-window['products#show'] = (data) ->
+window['shaving/products#show'] = (data) ->
   $ ->
     $.getJSON window.location.href, parse_data
