@@ -53,7 +53,10 @@
 
       - @product.reviews.order(:overall_rating).each_with_index do |review, i|
         %p
-          = review.comments
+          - if review.comments.nil?
+            = review.comments
+          - else
+            No comments for this review.
 
         %small.text-muted
           = updated_at(review)
