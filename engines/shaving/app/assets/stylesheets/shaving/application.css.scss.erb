@@ -30,8 +30,9 @@ body {
   font-family: 'Alike Angular', serif;
   font-size: 16px;
 
-  background: url(<%= asset_url 'background-noise.png' %>);
-  background-color: $background;
+  color: black;
+
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 50%, rgba(0,0,0,0.26) 75%), url(<%= asset_url 'shaving/paper_texture_3.jpg' %>);
 }
 
 h1,
@@ -68,7 +69,7 @@ h6:first-letter{
 }
 
 .content {
-  background-color: white;
+  <%#background-color: white;%>
 
   padding-bottom: 20px;
 }
@@ -76,4 +77,25 @@ h6:first-letter{
 .btn {
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+.header {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  h1 {
+    transform: rotate(-15deg);
+
+    font-size: 50px;
+    font-style: italic;
+
+    &:first-letter {
+      font-size: 80px;
+    }
+
+    a {
+      color: black;
+    }
+  }
 }

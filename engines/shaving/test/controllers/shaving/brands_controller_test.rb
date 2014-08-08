@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module Shaving
-  class BrandsControllerTest < ActionController::TestCase
+  class BrandsControllerTest < ActiveSupport::TestCase
     test "does index return correctly?" do
       get :index
       assert_response :success

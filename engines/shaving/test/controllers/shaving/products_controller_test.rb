@@ -3,8 +3,8 @@ require 'test_helper'
 module Shaving
   class ProductsControllerTest < ActionController::TestCase
     def create_type_and_brand
-      @brand = create :shaving_brand
-      @type = create :shaving_type
+      @brand = FactoryGirl.create :shaving_brand
+      @type = FactoryGirlcreate :shaving_type
     end
 
     test "does index return correctly?" do
@@ -58,7 +58,7 @@ module Shaving
     end
 
     test "can we view the show page for a product?" do
-      product = create :shaving_product, :with_brand, :with_type
+      product = FactoryGirl.create :shaving_product, :with_brand, :with_type
 
       get :show, {:id => product.id}
       assert_response :success
@@ -68,7 +68,7 @@ module Shaving
     end
 
     test "can we view the edit page for a product?" do
-      product = create :shaving_product, :with_brand, :with_type
+      product = FactoryGirlcreate :shaving_product, :with_brand, :with_type
 
       get :edit, {:id => product.id}
       assert_response :success
@@ -81,7 +81,7 @@ module Shaving
     end
 
     test "can we update a product?" do
-      product = build :shaving_product, :with_brand, :with_type
+      product = FactoryGirl.build :shaving_product, :with_brand, :with_type
       product.save
 
       product.name = "TestTestTest"
