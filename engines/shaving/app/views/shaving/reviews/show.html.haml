@@ -1,7 +1,7 @@
 .row
   .col-md-12
     %h1 Review
-    %h3 #{ link_to @review.product.name, product_path(@review.product) }
+    %h3 #{ link_to @review.product.name, shaving.product_path(@review.product) }
 
 .row
   .col-md-12
@@ -44,4 +44,4 @@
 
 .row
   .col-md-12
-    = link_to 'Edit', edit_review_path(@review), class: 'btn btn-default'
+    = link_to 'Edit', shaving.edit_review_path(@review), class: 'btn btn-default'

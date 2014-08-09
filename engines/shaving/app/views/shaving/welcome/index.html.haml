@@ -3,17 +3,17 @@
     - if Shaving::Brand.count > 0
       %ul#shaving-supplies
         %li#brands
-          = link_to 'Brands', brands_path
+          = link_to 'Brands', shaving.brands_path
 
         - if Shaving::Product.count > 0
           %li#products
-            = link_to 'Products', products_path
+            = link_to 'Products', shaving.products_path
 
         - if Shaving::Review.count > 0
           %li#reviews
-            = link_to 'Reviews', reviews_path
+            = link_to 'Reviews', shaving.reviews_path
 
     - else
       .jumbotron
         %p No brands in the system yet. Want to make one?
-        = link_to 'New Brand', new_brand_path, :class => 'btn btn-default'
+        = link_to 'New Brand', shaving.new_brand_path, :class => 'btn btn-default'

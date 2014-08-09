@@ -1,3 +1,10 @@
+require 'haml-rails'
+
+require 'bower-rails'
+
+require 'sass'
+require 'bootstrap-sass'
+
 module Shaving
   class Engine < ::Rails::Engine
     isolate_namespace Shaving

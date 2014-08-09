@@ -12,18 +12,18 @@
 
 .row
   .col-md-12
-    = link_to 'Edit', edit_brand_path(@brand), class: 'btn btn-default'
+    = link_to 'Edit', shaving.edit_brand_path(@brand), class: 'btn btn-default'
 
 .row
   .col-md-12
     %h3 Products
     - if @brand.products.any?
-      = link_to 'New Product', new_product_path(:brand => @brand), class: 'btn btn-default'
+      = link_to 'New Product', shaving.new_product_path(:brand => @brand), class: 'btn btn-default'
 
     - else
       .jumbotron
         %p There are no products for this brand yet. Want to make one?
-        = link_to 'New Product', new_product_path(:brand => @brand), class: 'btn btn-default'
+        = link_to 'New Product', shaving.new_product_path(:brand => @brand), class: 'btn btn-default'
 
 - if @brand.products.any?
   - Shaving::Type.all.order(:name).each do |type|

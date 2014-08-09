@@ -23,7 +23,7 @@ a:hover, a:active {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: serif;
   font-size: 16px;
 
   color: black;
@@ -37,7 +37,8 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Market Deco', sans-serif;
+  font-family: 'Diner Fatt', sans-serif;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 
@@ -67,6 +68,10 @@ h6:first-letter{
 
 .content {
   padding-bottom: 20px;
+
+  border-left: 1px rgb(151, 151, 151) solid;
+  border-right: 1px rgb(151,151,151) solid;
+  background-color: rgba(100, 100, 100, 0.3);
 }
 
 .btn {
@@ -77,13 +82,10 @@ h6:first-letter{
 .header {
   font-family: 'Diner Fatt', sans-serif;
 
-  text-align: center;
-
-  padding-top: 20px;
-  padding-bottom: 20px;
-
   h1 {
-    transform: rotate(-15deg);
+    text-align: center;
+
+    transform: rotate(-14deg);
 
     font-family: inherit;
     font-size: 50px;
@@ -96,5 +98,24 @@ h6:first-letter{
     a {
       color: black;
     }
+  }
+
+  h3 {
+    font-family: serif;
+
+    position: relative;
+
+    top: 45px;
+    left: 95px;
+  }
+
+  h5 {
+    font-family: serif;
+
+    position: relative;
+
+    float: right;
+
+    left: -130px;
   }
 }
