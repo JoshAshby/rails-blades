@@ -27,7 +27,7 @@ module Shaving
 
     test "can we post a new brand and have it redirect corrrectly?" do
       assert_difference 'Shaving::Brand.all.count', 1 do
-        post :create, shaving_brand: {name: 'Test'}
+        post :create, brand: {name: 'Test'}
       end
 
       assert_redirected_to brand_path(assigns(:brand))
@@ -60,7 +60,7 @@ module Shaving
 
       brand.name = "TestTestTest"
 
-      put :update, id: brand.id, shaving_brand: {name: brand.name}
+      put :update, id: brand.id, brand: {name: brand.name}
 
       assert_redirected_to brand_path(assigns(:brand))
     end

@@ -3,8 +3,8 @@ require 'test_helper'
 module Shaving
   class ProductsControllerTest < ActionController::TestCase
     def create_type_and_brand
-      @brand = FactoryGirl.create :shaving_brand
-      @type = FactoryGirlcreate :shaving_type
+      @brand = create :shaving_brand
+      @type = create :shaving_type
     end
 
     test "does index return correctly?" do
@@ -38,7 +38,7 @@ module Shaving
     test "can we post an empty product and have it render the new form?" do
       create_type_and_brand
 
-      post :create, shaving_product: {name: nil}
+      post :create, product: {name: nil}
 
       assert_template :new
       assert_template partial: '_form'
@@ -51,14 +51,14 @@ module Shaving
       create_type_and_brand
 
       assert_difference 'Shaving::Product.all.count', 1 do
-        post :create, shaving_product: {name: 'Test', brand_id: @brand, type_id: @type}
+        post :create, product: {name: 'Test', brand_id: @brand, type_id: @type}
       end
 
       assert_redirected_to product_path(assigns(:product))
     end
 
     test "can we view the show page for a product?" do
-      product = FactoryGirl.create :shaving_product, :with_brand, :with_type
+      product = create :shaving_product, :with_brand, :with_type
 
       get :show, {:id => product.id}
       assert_response :success
@@ -68,7 +68,7 @@ module Shaving
     end
 
     test "can we view the edit page for a product?" do
-      product = FactoryGirlcreate :shaving_product, :with_brand, :with_type
+      product = create :shaving_product, :with_brand, :with_type
 
       get :edit, {:id => product.id}
       assert_response :success
@@ -81,12 +81,12 @@ module Shaving
     end
 
     test "can we update a product?" do
-      product = FactoryGirl.build :shaving_product, :with_brand, :with_type
+      product = build :shaving_product, :with_brand, :with_type
       product.save
 
       product.name = "TestTestTest"
 
-      put :update, id: product.id, shaving_product: {name: product.name}
+      put :update, id: product.id, product: {name: product.name}
 
       assert_redirected_to product_path(assigns(:product))
     end

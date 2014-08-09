@@ -34,7 +34,7 @@ module Shaving
     test "can we post an empty review and have it render the new form?" do
       create :shaving_product, :with_type, :with_brand
 
-      post :create, shaving_review: {comments: ''}
+      post :create, review: {comments: ''}
 
       assert_response :success
 
@@ -49,7 +49,7 @@ module Shaving
       product.save
 
       assert_difference 'Shaving::Review.all.count', 1 do
-        post :create, shaving_review: {comments: 'Test', overall_rating: 1, face_feel: 2, shaving_feel: 3, product_id: product}
+        post :create, review: {comments: 'Test', overall_rating: 1, face_feel: 2, shaving_feel: 3, product_id: product}
       end
 
       assert_redirected_to review_path(assigns(:review))
@@ -81,7 +81,7 @@ module Shaving
       review = build :shaving_review, :with_product
       review.save
 
-      put :update, id: review.id, shaving_review: {comment: 'WATWATWAT'}
+      put :update, id: review.id, review: {comment: 'WATWATWAT'}
 
       assert_redirected_to review_path(assigns(:review))
     end
@@ -96,6 +96,5 @@ module Shaving
 
       assert_redirected_to reviews_path
     end
-
   end
 end

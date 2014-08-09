@@ -15,7 +15,7 @@ module Shaving
     end
 
     test "should get index with the ul list with one li" do
-      assert FactoryGirl.create :shaving_brand
+      assert create :shaving_brand
 
       get :index
       assert_response :success

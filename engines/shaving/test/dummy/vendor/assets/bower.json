@@ -1,0 +1,11 @@
+{
+  "name": "dsl-generated dependencies",
+  "dependencies": {
+    "lodash": "latest",
+    "d3": "latest",
+    "epoch": "latest",
+    "rickshaw": "latest",
+    "moment": "latest",
+    "nvd3": "latest"
+  }
+}
