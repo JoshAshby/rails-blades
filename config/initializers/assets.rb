@@ -20,3 +20,5 @@ Rails.application.config.assets.precompile << Proc.new do |path|
     false
   end
 end
+
+Rails.application.config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')

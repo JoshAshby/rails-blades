@@ -1,7 +1,5 @@
 require 'haml-rails'
 
-require 'bower-rails'
-
 require 'sass'
 require 'bootstrap-sass'
 

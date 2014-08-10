@@ -4,7 +4,6 @@ PATH
     shaving (0.0.1)
       autoprefixer-rails
       bootstrap-sass (~> 3.2.0)
-      bower-rails
       coffee-rails (~> 4.0.0)
       haml-rails
       jbuilder (~> 2.0)
