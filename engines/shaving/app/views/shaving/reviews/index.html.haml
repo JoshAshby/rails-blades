@@ -2,7 +2,7 @@
   .col-md-12
     %h1 Reviews
 
-- if @reviews.any?
+- if @reviews.any? and current_user
   .row
     .col-md-12
       = link_to 'New', shaving.new_review_path, class: 'btn btn-default'
@@ -17,5 +17,7 @@
 
     - else
       .jumbotron
-        %p There are no reviews yet. Want to make one?
-        = link_to 'New Review', shaving.new_review_path, class: 'btn btn-default'
+        %p There are no reviews yet.
+        - if current_user
+          %pWant to make one?
+          = link_to 'New Review', shaving.new_review_path, class: 'btn btn-default'

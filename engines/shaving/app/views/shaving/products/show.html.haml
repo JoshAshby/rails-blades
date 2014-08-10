@@ -25,9 +25,10 @@
     %p
       = @product.description
 
-.row
-  .col-md-12
-    = link_to 'Edit', shaving.edit_product_path(@product), class: 'btn btn-default'
+  - if current_user
+  .row
+    .col-md-12
+      = link_to 'Edit', shaving.edit_product_path(@product), class: 'btn btn-default'
 
 - if @product.reviews.any?
   .row
@@ -49,7 +50,8 @@
   .row
     .col-md-12
       %h3 Reviews
-      = link_to 'New Review', shaving.new_review_path(:product => @product), class: 'btn btn-default'
+      - if current_user
+        = link_to 'New Review', shaving.new_review_path(:product => @product), class: 'btn btn-default'
 
       - @product.reviews.order(:overall_rating).each_with_index do |review, i|
         %p
@@ -61,12 +63,15 @@
         %small.text-muted
           = updated_at(review)
 
-        .btn-toolbar
-          .btn-group
-            = link_to 'View', review, class: 'btn btn-default'
-            = link_to 'Edit', shaving.edit_review_path(review), class: 'btn btn-primary'
-          .btn-group.pull-right
-            = link_to 'Delete', shaving.review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+        - if current_user
+          .btn-toolbar
+            .btn-group
+              = link_to 'View', review, class: 'btn btn-default'
+              = link_to 'Edit', shaving.edit_review_path(review), class: 'btn btn-primary'
+            .btn-group.pull-right
+              = link_to 'Delete', shaving.review_path(review), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'
+        - else
+          = link_to 'view', review, class: 'btn btn-default'
 
         - unless (@product.reviews.length - i) == 1
           %hr
@@ -75,6 +80,7 @@
   .row
     .col-md-12
       .jumbotron
-        %p This product doesn't have any reviews yet. Want to make one?
-
-        = link_to 'New Review', shaving.new_review_path(:product => @product), class: 'btn btn-default'
+        %p This product doesn't have any reviews yet.
+        - if current_user
+          %pWant to make one?
+          = link_to 'New Review', shaving.new_review_path(:product => @product), class: 'btn btn-default'

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'welcome/index'
+  get 'about' => 'about#index', as: :about
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
@@ -7,6 +8,13 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   mount Shaving::Engine, at: '/shaving'
+
+  devise_for :users, :controllers => { :registrations => "registrations" }
+  #, :skip => [:registrations]
+    #as :user do
+      #get 'users/edit' => 'devise/registrations#edit', :as => 'edit_user_registration'
+      #put 'users/:id' => 'devise/registrations#update', :as => 'user_registration'
+    #end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

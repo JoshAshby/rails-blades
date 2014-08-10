@@ -22,10 +22,11 @@ group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
 
-#group :production do
-  #gem 'pg'
-  #gem 'rails_12factor'
-#end
+group :production do
+  ruby "2.1.1"
+  gem 'pg'
+  gem 'rails_12factor'
+end
 
 group :development do
   gem 'spring'

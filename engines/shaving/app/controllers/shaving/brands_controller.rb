@@ -12,6 +12,7 @@ module Shaving
 
     def create
       @brand = Shaving::Brand.new brand_params
+      @brand.user = current_user
 
       if @brand.save
         redirect_to @brand
@@ -46,7 +47,7 @@ module Shaving
 
     private
       def brand_params
-        params.require(:brand).permit(:name)
+        params.require(:brand).permit :name, :user_id
       end
 
       def find_brand

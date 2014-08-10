@@ -14,6 +14,7 @@ module Shaving
 
     def create
       @review = Shaving::Review.new review_params
+      @review.user = current_user
 
       if @review.save
         redirect_to @review

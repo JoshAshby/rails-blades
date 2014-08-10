@@ -6,4 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.create username: 'JoshAshby', email: 'joshuaashby@joshashby.com', password: ENV["SUPER_SECRET_PASSWORD"]
+
 Shaving::Engine.load_seed

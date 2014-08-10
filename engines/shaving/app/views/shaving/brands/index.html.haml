@@ -2,7 +2,7 @@
   .col-md-12
     %h1 Brands
 
-- if @brands.any?
+- if @brands.any? and current_user
   .row
     .col-md-12
       = link_to 'New', shaving.new_brand_path, class: 'btn btn-default'
@@ -16,6 +16,8 @@
             = link_to brand.name, brand
     - else
       .jumbotron
-        %p There are no brands yet. Want to make one?
-        = link_to 'New Brand', shaving.new_brand_path, class: 'btn btn-default'
+        %p There are no brands yet.
+        - if current_user
+          %p Want to make one?
+          = link_to 'New Brand', shaving.new_brand_path, class: 'btn btn-default'
 

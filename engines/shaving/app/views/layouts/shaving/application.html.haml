@@ -3,9 +3,6 @@
   %head
     %title Shaving
 
-    -#%link{ rel: "stylesheet", href: "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" }
-    -#%script{ src: "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" }
-
     = stylesheet_link_tag    'shaving/application', params[:controller], media: 'all'
     = javascript_include_tag 'shaving/application', params[:controller]
     = csrf_meta_tags
@@ -13,8 +10,12 @@
   %body
     .content
       %nav
-        -if logged_in?
-          Welcome, #{ current_user }
+        - if user_signed_in?
+          Welcome, #{ current_user.username }
+          %small.text-muted
+            = link_to "(Logout)", main_app.destroy_user_session_path
+        - else
+          = link_to "Login", main_app.new_user_session_path
 
       %header
         %h3 Ashby's
@@ -22,15 +23,15 @@
         %h5 #{ link_to "JoshIsA.Ninja", main_app.root_path }
 
       %section.flashes
-        -if flash[:notice]
+        - if flash[:notice]
           .alert.alert-info
             = flash[:notice]
 
-        -if flash[:warning]
+        - if flash[:warning]
           .alert.alert-warning
             = flash[:warning]
 
-        -if flash[:error]
+        - if flash[:error]
           .alert.alert-danger
             = flash[:error]
 

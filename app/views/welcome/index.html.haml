@@ -1,11 +1,37 @@
-.row
-  .col-md-12
-    %span{ :style => "text-align: center;" }
-      %h1 Allo, Josh
+.site-wrapper
+  .site-wrapper-inner
+    .cover-container
 
-.row
-  .col-md-12
-    %p Things
-    %ul
-      %li
-        = link_to 'Shaving', shaving_path
+      .masthead.clearfix
+        .inner
+          -#%h3.masthead-brand Riverside
+          %ul.nav.masthead-nav
+            %li.active
+              = link_to "Home", main_app.root_path
+            %li
+              = link_to "Shaving", shaving.root_path
+            %li
+              = link_to "About", main_app.about_path
+
+      -if flash[:notice]
+        .alert.alert-info
+          = flash[:notice]
+
+      -if flash[:warning]
+        .alert.alert-warning
+          = flash[:warning]
+
+      -if flash[:error]
+        .alert.alert-danger
+          = flash[:error]
+
+      .inner.cover
+        %h1.cover-heading Riverside
+        %p.lead A Nice calming place. Written in Ruby.
+        %p.lead
+          = link_to "Show me things!", shaving.root_path, class: 'btn btn-default'
+
+      .mastfoot
+        .inner
+          %p Project by #{ link_to "JoshAshby", "https://github.com/JoshAshby" }
+          %p Based on the cover template for #{ link_to "Bootstrap", "http://getbootstrap.com" }, by #{ link_to "@mdo", "https://twitter.com/mdo" }.

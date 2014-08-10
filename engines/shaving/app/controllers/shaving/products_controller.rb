@@ -14,6 +14,7 @@ module Shaving
 
     def create
       @product = Shaving::Product.new product_params
+      @product.user = current_user
 
       if @product.save
         redirect_to @product
@@ -49,7 +50,7 @@ module Shaving
 
     private
       def product_params
-        params.require(:product).permit :name, :description, :brand_id, :type_id
+        params.require(:product).permit :name, :description, :brand_id, :type_id, :user_id
       end
 
       def find_all_brands_and_types
