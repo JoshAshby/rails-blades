@@ -2,7 +2,5 @@
 
 asset 'lodash'
 asset 'd3'
-asset 'epoch'
-asset 'rickshaw'
 asset 'moment'
 asset 'nvd3'

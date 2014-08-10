@@ -2,6 +2,10 @@ require 'test_helper'
 
 module Shaving
   class BrandsControllerTest < ActiveSupport::TestCase
+    setup do
+      @routes = Shaving::Engine.routes
+    end
+
     test "does index return correctly?" do
       get :index
       assert_response :success

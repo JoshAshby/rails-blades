@@ -2,6 +2,10 @@ require 'test_helper'
 
 module Shaving
   class ProductsControllerTest < ActionController::TestCase
+    setup do
+      @routes = Shaving::Engine.routes
+    end
+
     def create_type_and_brand
       @brand = create :shaving_brand
       @type = create :shaving_type

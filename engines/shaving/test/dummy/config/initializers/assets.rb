@@ -7,17 +7,16 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-
-BowerRails.configure do |bower_rails|
-  # Tell bower-rails what path should be considered as root. Defaults to Dir.pwd
-  # bower_rails.root_path = Dir.pwd
-
-  # Invokes rake bower:install before precompilation. Defaults to false
-   bower_rails.install_before_precompile = true
-
-  # Invokes rake bower:resolve before precompilation. Defaults to false
-   bower_rails.resolve_before_precompile = true
-
-  # Invokes rake bower:clean before precompilation. Defaults to false
-   bower_rails.clean_before_precompile = true
+Rails.application.config.assets.precompile << Proc.new do |path|
+  if path =~ /\.(css|js)\z/
+    full_path = Rails.application.assets.resolve(path).to_path
+    app_assets_path = Rails.root.join('app', 'assets').to_path
+    if full_path.starts_with? app_assets_path
+      true
+    else
+      false
+    end
+  else
+    false
+  end
 end

@@ -2,32 +2,37 @@
 %html
   %head
     %title Shaving
+
+    -#%link{ rel: "stylesheet", href: "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" }
+    -#%script{ src: "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" }
+
     = stylesheet_link_tag    'shaving/application', params[:controller], media: 'all'
     = javascript_include_tag 'shaving/application', params[:controller]
     = csrf_meta_tags
 
-  %body.shaving
-    -if flash[:notice]
-      .container
-        .alert.alert-info
-          = flash[:notice]
+  %body
+    .content
+      %nav
+        -if logged_in?
+          Welcome, #{ current_user }
 
-    -if flash[:warning]
-      .container
-        .alert.alert-warning
-          = flash[:warning]
+      %header
+        %h3 Ashby's
+        %h1 #{ link_to "Catalog of Shaving Supplies!", shaving.root_path }
+        %h5 #{ link_to "JoshIsA.Ninja", main_app.root_path }
 
-    -if flash[:error]
-      .container
-        .alert.alert-danger
-          = flash[:error]
+      %section.flashes
+        -if flash[:notice]
+          .alert.alert-info
+            = flash[:notice]
 
-    .container-fluid
-      .row
-        .col-md-6.col-md-offset-3.content
-          .header
-            %h3 Ashby's
-            %h1 #{ link_to "Catalog of Shaving Supplies!", shaving.root_path }
-            %h5 #{ link_to "JoshIsA.Ninja", main_app.root_path }
+        -if flash[:warning]
+          .alert.alert-warning
+            = flash[:warning]
 
-          = yield
+        -if flash[:error]
+          .alert.alert-danger
+            = flash[:error]
+
+      %section.main
+        = yield

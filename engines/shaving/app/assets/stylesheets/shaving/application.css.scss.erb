@@ -14,12 +14,21 @@
  *= require shaving/fonts
  */
 
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 a:hover, a:active {
   text-decoration: none;
+}
+
+body, html {
+  height: 100%;
+
+  margin-top: 0px;
+  padding-top: 0px;
+
+  margin-bottom: 0px;
+  padding-bottom: 0px;
 }
 
 body {
@@ -37,7 +46,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Diner Fatt', sans-serif;
+  font-family: 'Diner', sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -66,21 +75,28 @@ h6:first-letter{
   font-size: 22px;
 }
 
+.btn {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
 .content {
-  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding-top: 1px; // THIS IS: WHHHHUUUUUUUT
+
+  width: 600px;
+  min-height: 100%;
 
   border-left: 1px rgb(151, 151, 151) solid;
   border-right: 1px rgb(151,151,151) solid;
   background-color: rgba(100, 100, 100, 0.3);
 }
 
-.btn {
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.header {
-  font-family: 'Diner Fatt', sans-serif;
+header {
+  font-family: 'Diner', sans-serif;
+  height: 225px;
 
   h1 {
     text-align: center;
@@ -97,6 +113,10 @@ h6:first-letter{
 
     a {
       color: black;
+
+      &:hover, &:active, &:focus {
+        color: black;
+      }
     }
   }
 
@@ -118,4 +138,29 @@ h6:first-letter{
 
     left: -130px;
   }
+}
+
+nav {
+  font-size: small;
+
+  padding: 5px;
+
+  width: 100%;
+
+  border-bottom: 1px rgb(151,151,151) solid;
+}
+
+section.flashes {
+  padding: 10px;
+
+  width: 100%;
+}
+
+section.main {
+  $padding-sides: 20px;
+
+  padding-left: $padding-sides;
+  padding-right: $padding-sides;
+
+  padding-bottom: 25px;
 }
