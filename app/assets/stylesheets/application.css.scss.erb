@@ -13,6 +13,36 @@
  *= require_self
  */
 
+$background: url(<%= asset_url 'bright_squares.png' %>);
+
+
+$navbar-height:                         75px !default;
+
+$navbar-josh-background:                url(<%= asset_url 'background_1.jpg' %>);
+$navbar-josh-color:                     #777 !default;
+$navbar-josh-bg:                        transparent !default;
+$navbar-josh-border:                    transparent !default;
+
+// Navbar links
+$navbar-josh-link-color:                white !default;
+$navbar-josh-link-hover-color:          #333 !default;
+$navbar-josh-link-hover-bg:             fade-out(white, 0.6) !default;
+$navbar-josh-link-active-color:         white !default;
+$navbar-josh-link-active-bg:            fade-out(white, 0.6) !default;
+$navbar-josh-link-disabled-color:       #ccc !default;
+$navbar-josh-link-disabled-bg:          transparent !default;
+
+// Navbar brand label
+$navbar-josh-brand-color:               fade-out($navbar-josh-link-color, 0.2) !default;
+$navbar-josh-brand-hover-color:         darken($navbar-josh-brand-color, 10%) !default;
+$navbar-josh-brand-hover-bg:            transparent !default;
+
+// Navbar toggle
+$navbar-josh-toggle-hover-bg:           #ddd !default;
+$navbar-josh-toggle-icon-bar-bg:        #888 !default;
+$navbar-josh-toggle-border-color:       #ddd !default;
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -21,5 +51,162 @@ a:hover, a:active {
 }
 
 body {
-  background: url(<%= asset_url 'bright_squares.png' %>);
+  background: $background;
+  margin-top: $navbar-height + 20;
 }
+
+.navbar-background {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  width: 100%;
+  height: $navbar-height;
+
+  background: $navbar-josh-background;
+  background-size: cover;
+  background-position-y: -280px;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255,255,255,0));
+}
+
+.navbar-josh {
+  @extend .navbar-default;
+
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  background-color: $navbar-josh-bg;
+  border-color: $navbar-josh-border;
+
+  .navbar-brand {
+    font-weight: 500;
+    font-size: 30px;
+
+    color: $navbar-josh-brand-color;
+    &:hover,
+    &:focus {
+      color: $navbar-josh-brand-hover-color;
+      background-color: $navbar-josh-brand-hover-bg;
+    }
+  }
+
+  .navbar-text {
+    color: $navbar-josh-color;
+  }
+
+  .navbar-nav {
+    > li > a {
+      color: $navbar-josh-link-color;
+
+      &:hover,
+      &:focus {
+        color: $navbar-josh-link-hover-color;
+        background-color: $navbar-josh-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-josh-link-active-color;
+        background-color: $navbar-josh-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $navbar-josh-link-disabled-color;
+        background-color: $navbar-josh-link-disabled-bg;
+      }
+    }
+  }
+
+  .navbar-toggle {
+    border-color: $navbar-josh-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: $navbar-josh-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: $navbar-josh-toggle-icon-bar-bg;
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $navbar-josh-border;
+  }
+
+  // Dropdown menu items
+  .navbar-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $navbar-josh-link-hover-bg;
+        color: $navbar-josh-link-hover-color;
+      }
+    }
+
+    @media (max-width: $grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: $navbar-josh-link-color;
+          &:hover,
+          &:focus {
+            color: $navbar-josh-link-hover-color;
+            background-color: $navbar-josh-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-josh-link-active-color;
+            background-color: $navbar-josh-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $navbar-josh-link-disabled-color;
+            background-color: $navbar-josh-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Links in navbars
+  //
+  // Add a class to ensure links outside the navbar nav are colored correctly.
+
+  .navbar-link {
+    color: $navbar-josh-link-color;
+    &:hover {
+      color: $navbar-josh-link-hover-color;
+    }
+  }
+
+  .btn-link {
+    color: $navbar-josh-link-color;
+    &:hover,
+    &:focus {
+      color: $navbar-josh-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: $navbar-josh-link-disabled-color;
+      }
+    }
+  }
+}
+
