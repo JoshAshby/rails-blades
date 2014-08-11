@@ -20,16 +20,20 @@
         = f.text_area :comments, class: 'form-control'
 
       .form-group
+        = f.label :reviewed_on, class: 'control-label'
+        = f.date_field :reviewed_on, class: 'form-control'
+
+      .form-group
         = f.label :overall_rating, class: 'control-label'
-        = f.range_field :overall_rating, :in => 0..10
+        = f.number_field :overall_rating, in: 0..10, value: 5, class: 'form-control'
 
       .form-group
         = f.label :shaving_feel, class: 'control-label'
-        = f.range_field :shaving_feel, :in => 0..10
+        = f.number_field :shaving_feel, in: 0..10, value: 5, class: 'form-control'
 
       .form-group
         = f.label :face_feel, class: 'control-label'
-        = f.range_field :face_feel, :in => 0..10
+        = f.number_field :face_feel, in: 0..10, value: 5, class: 'form-control'
 
   .row
     .col-md-6
