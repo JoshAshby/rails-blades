@@ -22,12 +22,12 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def new
-    flash[:info] = 'Registrations are not open currently'
+    flash[:notice] = 'Registrations are not open currently'
     redirect_to root_path
   end
 
   def create
-    flash[:info] = 'Registrations are not open currently'
+    flash[:notice] = 'Registrations are not open currently'
     redirect_to root_path
   end
 
