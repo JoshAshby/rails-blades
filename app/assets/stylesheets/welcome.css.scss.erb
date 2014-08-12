@@ -1,6 +1,8 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 /*
  * Globals
@@ -172,4 +174,16 @@ body {
   .cover-container {
     width: 700px;
   }
+}
+
+.open > .dropdown-menu {
+  text-shadow: none;
+}
+
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
 }

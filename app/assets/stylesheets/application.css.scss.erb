@@ -33,7 +33,7 @@ $navbar-josh-link-disabled-color:       #ccc !default;
 $navbar-josh-link-disabled-bg:          transparent !default;
 
 // Navbar brand label
-$navbar-josh-brand-color:               fade-out($navbar-josh-link-color, 0.2) !default;
+$navbar-josh-brand-color:               $navbar-josh-link-color !default;
 $navbar-josh-brand-hover-color:         darken($navbar-josh-brand-color, 10%) !default;
 $navbar-josh-brand-hover-bg:            transparent !default;
 
@@ -53,6 +53,7 @@ a:hover, a:active {
 body {
   background: $background;
   margin-top: $navbar-height + 20;
+  margin-bottom: 20px;
 }
 
 .navbar-background {
