@@ -1,4 +1,11 @@
-# desc "Explaining what the task does"
-# task :shaving do
-#   # Task goes here
-# end
+require 'shaving/csv_importer'
+
+namespace :data do
+  desc "import data from files to database"
+
+  task :import, [:file] => [:environment] do |t, args|
+    file = args[:file]
+
+    Shaving::CsvImporter.read file
+  end
+end
