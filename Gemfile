@@ -15,6 +15,13 @@ gem 'jbuilder', '~> 2.0'
 gem 'haml-rails'
 
 gem 'devise'
+gem 'cancancan'
+gem 'paper_trail'
+
+gem 'arel'
+gem 'has_scope'
+
+gem 'rollout'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

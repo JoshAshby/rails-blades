@@ -10,17 +10,18 @@ class User < ActiveRecord::Base
 
   validates :username, :uniqueness => { :case_sensitive => false }
 
-  #before_create :create_login
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
 
-  #def create_login
-    #email = self.email.split(/@/)
-    #login_taken = User.where(:login => email[0]).first
-    #unless login_taken
-      #self.login = email[0]
-    #else
-      #self.login = self.email
-    #end
-  #end
+    if login = conditions.delete(:login)
+      where(conditions). \
+      where(
+        arel_table[:username].lower.eq(login.downcase).or(arel_table[:email].lower.eq(login.downcase))
+      ).first
+    else
+      where(conditions).first
+    end
+  end
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
