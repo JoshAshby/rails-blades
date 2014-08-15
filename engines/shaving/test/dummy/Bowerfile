@@ -1,6 +1,0 @@
-# Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
-
-asset 'lodash'
-asset 'd3'
-asset 'moment'
-asset 'nvd3'

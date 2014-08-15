@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :shaving_brand, :class => 'Shaving::Brand' do
     name
+    user
   end
 end
