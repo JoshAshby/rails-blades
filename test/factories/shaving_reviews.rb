@@ -4,6 +4,8 @@ FactoryGirl.define do
   factory :shaving_review, :class => 'Shaving::Review' do
     comments { generate(:description) }
 
+    user
+
     overall_rating 5
     face_feel 5
     shaving_feel 5

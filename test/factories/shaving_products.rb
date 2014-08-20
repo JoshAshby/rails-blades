@@ -3,6 +3,8 @@
 FactoryGirl.define do
   factory :shaving_product, :class => 'Shaving::Product' do
     name
+
+    user
   end
 
   trait :with_reviews do

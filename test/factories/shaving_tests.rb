@@ -5,6 +5,14 @@ FactoryGirl.define do
     "Named thing #{n}"
   end
 
+  sequence :email do |n|
+    "test#{n}@test.com"
+  end
+
+  sequence :password do |n|
+    "pleaseuseme#{n}"
+  end
+
   sequence :description do |n|
     "This is a test description. #{n}"
   end
