@@ -18,7 +18,6 @@ gem 'devise'
 gem 'cancancan'
 gem 'paper_trail'
 
-gem 'arel'
 gem 'has_scope'
 
 gem 'rollout'
@@ -45,5 +44,3 @@ group :development, :test do
   gem 'byebug'
   gem 'bower-rails'
 end
-
-gem 'shaving', path: "engines/shaving"

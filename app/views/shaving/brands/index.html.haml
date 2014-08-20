@@ -1,0 +1,23 @@
+.row
+  .col-md-12
+    %h1 Brands
+
+- if @brands.any? and current_user
+  .row
+    .col-md-12
+      = link_to 'New', new_shaving_brand_path, class: 'btn btn-default'
+
+.row
+  .col-md-12
+    - if @brands.any?
+      %ol
+        - @brands.each do |brand|
+          %li
+            = link_to brand.name, brand
+    - else
+      .jumbotron
+        %p There are no brands yet.
+        - if current_user
+          %p Want to make one?
+          = link_to 'New Brand', new_shaving_brand_path, class: 'btn btn-default'
+

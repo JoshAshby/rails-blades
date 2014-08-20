@@ -15,5 +15,4 @@
 /log/*.log
 /tmp
 /vendor/assets/bower_components/
-
-/engines/*/test/dummy/vendor/assets/bower_components/
+/public/assets/

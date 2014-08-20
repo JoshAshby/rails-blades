@@ -1,0 +1,29 @@
+.row
+  .col-md-12
+    %p
+      Welcome to my little corner of the shaving world. Recently I bought myself a Double Edge razor,
+      also known as a Safety Razor. Along with it, I bought two soaps and a pack of 50 blades, consiting of
+      2 blades per brand. As a result, I've setup a system of one blade per brand for each soap, and recording
+      the results down in a spreadsheet. As part of wanting to learn more about the basics of
+      Ruby on Rails, I then built this site to house the reviews per all shaving equipment I come across
+      and use.
+
+    - if Shaving::Brand.count > 0
+      %ul#shaving-supplies
+        %li#brands
+          = link_to 'Brands', shaving_brands_path
+
+        - if Shaving::Product.count > 0
+          %li#products
+            = link_to 'Products', shaving_products_path
+
+        - if Shaving::Review.count > 0
+          %li#reviews
+            = link_to 'Reviews', shaving_reviews_path
+
+    - else
+      .jumbotron
+        %p No brands in the system yet.
+        - if current_user
+          %p Want to make one?
+          = link_to 'New Brand', new_shaving_brand_path, :class => 'btn btn-default'

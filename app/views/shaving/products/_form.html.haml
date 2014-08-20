@@ -1,0 +1,35 @@
+= form_for @product, html: {class: 'form'} do |f|
+  .row
+    .col-md-12
+      - if @product.errors.any?
+        .error-explanation
+          %strong.text-danger Couldn't save product (#{ pluralize @product.errors.count, "error" })
+          %ul
+            - @product.errors.full_messages.each do |msg|
+              %li
+                = msg
+  .row
+    .col-md-12
+      .form-group
+        = f.label :name, class: 'control-label'
+        = f.text_field :name, class: 'form-control'
+
+      .form-group
+        = f.label :description, class: 'control-label'
+        = f.text_area :description, class: 'form-control'
+
+      .form-group
+        = f.label :type
+        = f.collection_select :type_id, @types, :id, :name, {}, {class: 'form-control'}
+
+      .form-group
+        = f.label :brand
+        = f.collection_select :brand_id, @brands, :id, :name, {}, {class: 'form-control'}
+
+  .row
+    .col-md-6
+      = f.submit class: 'btn btn-primary'
+
+    - unless @product.new_record?
+      .col-md-6
+        = link_to 'Delete', shaving_product_path(@product), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger pull-right'

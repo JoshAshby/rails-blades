@@ -1,0 +1,39 @@
+!!! 5
+%html
+  %head
+    %title Shaving
+
+    = stylesheet_link_tag    'shaving/application', params[:controller], media: 'all'
+    = javascript_include_tag 'shaving/application', params[:controller]
+    = csrf_meta_tags
+
+  %body
+    .content
+      %nav
+        - if user_signed_in?
+          Welcome, #{ current_user.username }
+          %small.text-muted
+            = link_to "(Logout)", destroy_user_session_path
+        - else
+          = link_to "Login", new_user_session_path
+
+      %header
+        %h3 Ashby's
+        %h1 #{ link_to "Catalog of Shaving Supplies!", shaving_root_path }
+        %h5 #{ link_to "JoshIsA.Ninja", root_path }
+
+      %section.flashes
+        - if flash[:notice]
+          .alert.alert-info
+            = flash[:notice]
+
+        - if flash[:warning]
+          .alert.alert-warning
+            = flash[:warning]
+
+        - if flash[:error]
+          .alert.alert-danger
+            = flash[:error]
+
+      %section.main
+        = yield

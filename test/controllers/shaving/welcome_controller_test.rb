@@ -2,10 +2,6 @@ require 'test_helper'
 
 module Shaving
   class WelcomeControllerTest < ActionController::TestCase
-    setup do
-      @routes = Shaving::Engine.routes
-    end
-
     test "should get index with jumbotron for no brands" do
       get :index
       assert_response :success

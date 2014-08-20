@@ -4,8 +4,6 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
 
-  mount Shaving::Engine, at: '/shaving'
-
   devise_for :users, :controllers => { :registrations => "registrations" }
 
   # Example resource route within a namespace:
@@ -14,4 +12,14 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  #
+  namespace :shaving do
+    get 'welcome/index'
+
+    root 'welcome#index'
+
+    resources :brands
+    resources :products
+    resources :reviews
+  end
 end

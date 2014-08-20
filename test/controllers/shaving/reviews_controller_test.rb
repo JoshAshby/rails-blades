@@ -2,10 +2,6 @@ require 'test_helper'
 
 module Shaving
   class ReviewsControllerTest < ActionController::TestCase
-    setup do
-      @routes = Shaving::Engine.routes
-    end
-
     test "does index return correctly?" do
       create :shaving_product, :with_type, :with_brand
 
